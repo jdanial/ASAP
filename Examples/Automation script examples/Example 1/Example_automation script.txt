@@ -1,0 +1,120 @@
+% Template script for automating ASAP
+%
+% Copyright -
+% John S. H. Danial (2018).
+% danial@is.mpg.de
+
+% Please note: a classification model .astr has to be copied in the project folder.
+% Please note: only microscopy-generated image files should be located in the project folder.
+
+%% setting options
+options.displayImages=1->6:false
+options.displayPlots=1->6:false
+options.exportRawData=1->6:true
+options.exportImages=1->6:true
+options.exportPlots=1->6:false
+
+%% setting simulation parameters
+simulationParam.simulate=false
+simulationParam.simulationMode=1->3:Structured
+simulationParam.pixelSize=1->3:10
+simulationParam.segment=1->3:true
+simulationParam.segmentationLevel=1->3:30
+simulationParam.numCycle=1->3:30
+simulationParam.photonCount=1->3:4000
+simulationParam.labelLength=1->3:10
+simulationParam.lateralPrecision=1->3:10
+% simulation parameters for the (Random) simulation mode. Can be left empty if
+% the (Structed) simulation mode is selected
+simulationParam.numFluorophore=1->3:0
+% simulation parameters for the (Structured) simulation mode. Can be left empty if
+% the (Random) simulation mode is selected
+simulationParam.numEpitope=1->3:10
+simulationParam.numStructure=1->3:1000
+simulationParam.structureSize=1->3:100
+simulationParam.labelingEfficiency=1->3:0.5
+simulationParam.rotationEnabled=1->3:true
+
+%% setting identification parameters
+identificationParam.identify=false
+identificationParam.identificationMode=1->6:Size
+identificationParam.segment=1->6:true
+identificationParam.segmentationLevel=1->6:30
+identificationParam.thresholdMode=1->6:Fixed
+identificationParam.thresholdMultiplier=1->6:1
+identificationParam.clearBorder=1->6:false
+identificationParam.maxClearParticleSize=1->6:0
+identificationParam.maxClearSearchRadius=1->6:0
+identificationParam.clusterParamD=1->6:1
+identificationParam.clusterParamS=1->6:1
+identificationParam.maxStructureSize=1->6:15
+identificationParam.minSize=1->6:10
+identificationParam.maxSize=1->6:10000
+
+%% setting analysis parameters
+analysisParam.analyze=false
+analysisParam.pixelSize=1->6:10
+analysisParam.analysisPlatform=1->6:CPU
+analysisParam.analysisMode=1->6:Pixel counting,Ellipse fitting,Radial profiling
+analysisParam.maxRingSize=1->6:20
+analysisParam.operations=1->6:None
+
+%% setting classification parameters
+classificationParam.classify=false
+classificationParam.assignmentNum=1->6:1
+classificationParam.shapeBefore=1->6:Ring
+classificationParam.shapeAfter=1->6:Ring
+classificationParam.descriptor=1->6:Area
+classificationParam.includeSecondBound=1->6:false
+classificationParam.firstBound=1->6:0
+classificationParam.secondBound=1->6:0
+classificationParam.firstEquality=1->6:<
+classificationParam.secondEquality=1->6:<
+
+%% setting clustering parameters
+clusteringParam.cluster=true
+clusteringParam.shape=1->6:Ring
+clusteringParam.descriptor=1->6:Elongation Fit
+clusteringParam.clusteringMode=1->6:Centroid
+clusteringParam.clusterAll=1->6:true
+clusteringParam.numClustersKnown=1->6:true
+clusteringParam.numClusters=1->6:2
+
+%% setting plotting parameters
+plottingParam.plot=true
+plottingParam.length=20
+plottingParam.width=20
+plottingParam.fontSize=14
+plottingParam.numGraphs=4
+plottingParam.includeBinned=1->4:false
+plottingParam.normalize=1->4:false
+plottingParam.addLegend=1->4:false
+plottingParam.flip=1->4:false
+plottingParam.addBox=1->4:true
+plottingParam.split=1->4:false
+plottingParam.files=1->4:1->6
+plottingParam.label=1->4:
+plottingParam.binNum=1->4:5
+plottingParam.shapes=1->2:Ring;3->3:non-ring;4->4:Ring
+plottingParam.rowNum=2
+plottingParam.xDescriptor=1->4:Distance
+plottingParam.yDescriptor=1->4:Raw Radial Profile
+plottingParam.map=1->4:lch
+plottingParam.fill=1->4:All
+plottingParam.subType=1->2:Scatter;3->4:Smooth
+plottingParam.fit=1->4:None
+plottingParam.equation=1->4:
+plottingParam.xLine=1->4:
+plottingParam.yLine=1->4:
+
+%% setting montage parameters
+montagingParam.montage=true
+montagingParam.numImages=600
+montagingParam.imageSize=200
+montagingParam.fontSize=14
+montagingParam.includeBinned=1->600:false
+montagingParam.label=1->600:
+montagingParam.scale=1->600:50
+montagingParam.file=1->600:1
+montagingParam.shape=1->600:Ring
+montagingParam.rowNum=20

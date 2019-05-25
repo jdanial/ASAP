@@ -1,0 +1,87 @@
+% Template script for automating ASAP
+%
+% Copyright -
+% John S. H. Danial (2018).
+% danial@is.mpg.de
+
+% Please note: a classification model .astr has to be copied in the project folder.
+% Please note: only microscopy-generated image files should be located in the project folder.
+
+%% setting options
+options.displayImages=1->28:false
+options.displayPlots=1->28:false
+options.exportRawData=1->28:true
+options.exportImages=1->28:false
+options.exportPlots=1->28:true
+
+%% setting simulation parameters
+simulationParam.simulate=false
+
+%% setting identification parameters
+identificationParam.identify=false
+identificationParam.identificationMode=1->28:Size
+identificationParam.segment=1->28:false
+identificationParam.segmentationLevel=1->28:1
+identificationParam.thresholdMode=1->28:Fixed
+identificationParam.thresholdMultiplier=1->28:1
+identificationParam.clearBorder=1->28:false
+identificationParam.maxClearParticleSize=1->28:0
+identificationParam.maxClearSearchRadius=1->28:0
+identificationParam.maxStructureSize=1->4:13;5->8:14;9->12:15;13->16:9;17->20:10;21->24:11;25->28:12
+identificationParam.minSize=1->28:10
+identificationParam.maxSize=1->28:10000
+
+%% setting analysis parameters
+analysisParam.analyze=false
+analysisParam.pixelSize=1->28:10
+analysisParam.analysisPlatform=1->28:CPU
+analysisParam.analysisMode=1->28:Pixel counting,Ellipse fitting,Radial profiling
+analysisParam.maxRingSize=1->28:20
+analysisParam.operations=1->28:None
+
+%% setting classification parameters
+classificationParam.classify=false
+classificationParam.assignmentNum=1->28:1
+classificationParam.shapeBefore=1->28:Ring
+classificationParam.shapeAfter=1->28:Ring
+classificationParam.descriptor=1->28:Elongation Fit
+classificationParam.includeSecondBound=1->28:false
+classificationParam.firstBound=1->28:0
+classificationParam.secondBound=1->28:0
+classificationParam.firstEquality=1->28:<
+classificationParam.secondEquality=1->28:<
+
+%% setting clustering parameters
+clusteringParam.cluster=false
+
+%% setting plotting parameters
+plottingParam.plot=true
+plottingParam.length=20
+plottingParam.width=20
+plottingParam.fontSize=12
+plottingParam.numGraphs=28
+plottingParam.includeBinned=1->28:false
+plottingParam.normalize=1->28:false
+plottingParam.addLegend=1->28:false
+plottingParam.flip=1->28:false
+plottingParam.addBox=1->28:true
+plottingParam.split=1->28:false
+plottingParam.files=1->1:1;2->2:5;3->3:9;4->4:13;5->5:17;6->6:21;7->7:25;8->8:3;9->9:7;10->10:11;11->11:15;12->12:19;13->13:23;14->14:27;15->15:2;16->16:6;17->17:10;18->18:14;19->19:18;20->20:22;21->21:26;22->22:4;23->23:8;24->24:12;25->25:16;26->26:20;27->27:24;28->28:28
+plottingParam.label=1->1:a;2->2:b;3->3:c;4->4:d;5->5:e;6->6:f;7->7:g;8->8:a;9->9:b;10->10:c;11->11:d;12->12:e;13->13:f;14->14:g;15->15:a;16->16:b;17->17:c;18->18:d;19->19:e;20->20:f;21->21:g;22->22:a;23->23:b;24->24:c;25->25:d;26->26:e;27->27:f;28->28:g
+plottingParam.binNum=1->28:5
+plottingParam.shapes=1->28:Ring
+plottingParam.rowNum=2
+plottingParam.rowId=1->7:1;8->14:1;15->21:2;22->28:2
+plottingParam.colId=1->7:1;8->14:2;15->21:1;22->28:2
+plottingParam.xDescriptor=1->28:Distance
+plottingParam.yDescriptor=1->28:Raw Radial Profile
+plottingParam.map=1->28:lch
+plottingParam.fill=1->28:All
+plottingParam.subType=1->28:Scatter
+plottingParam.fit=1->28:Custom
+plottingParam.equation=1->28:a * exp(-((x - b) ^ 2) / (2 * c ^ 2)) [600000,50,20]
+plottingParam.xLine=1->28:
+plottingParam.yLine=1->28:
+
+%% setting montage parameters
+montagingParam.montage=false
