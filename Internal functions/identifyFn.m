@@ -361,6 +361,16 @@ for structureId = 1 : numel(identifiedStructures)
                 absoluteCol = identifiedStructures(structureId).PixelList(pixelId,1);
                 relativeRow = absoluteRow - meanRow + centerRow + 1;
                 relativeCol = absoluteCol - meanCol + centerCol + 1;
+                if relativeRow < 1
+                    relativeRow = 1;
+                elseif relativeRow > size(rawImage,1)
+                    relativeRow = size(rawImage,1);
+                end
+                if relativeCol < 1
+                    relativeCol = 1;
+                elseif relativeCol > size(rawImage,2)
+                    relativeCol = size(rawImage,2);
+                end
                 rawImage(relativeRow,relativeCol) = image(absoluteRow,absoluteCol);
                 binaryImage(relativeRow,relativeCol) = thresholdImage(absoluteRow,absoluteCol);
                 identifiedStructures(structureId).rawStructure = rawImage;
