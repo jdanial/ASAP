@@ -39,7 +39,16 @@ switch mode
         dropDownHandle{1}.Value = dropDownHandle{1}.Items{1};
         
         %% updating dropdown menus - shapes
-        dropDownHandle{2}.Items = unique(app.pr_structuresData.file(1).shapes);
+        numFiles = length(app.pr_structuresData.file);
+        tempShapes = (app.pr_structuresData.file(1).shapes);
+        for fileId = 2 : numFiles
+            try
+                tempShapes = [tempShapes; (app.pr_structuresData.file(fileId).shapes)];
+            catch
+                tempShapes = [tempShapes; (app.pr_structuresData.file(fileId).shapes)'];
+            end
+        end
+        dropDownHandle{2}.Items = unique(tempShapes);
         dropDownHandle{2}.Value = dropDownHandle{2}.Items{1};
         
         %% updating dropdown menus - y descriptor
@@ -79,7 +88,10 @@ switch mode
                 end
             end
             if strcmp(yDescriptor,'Events')
-                dropDownHandle{4}.Value = dropDownHandle{4}.Items{1};
+                try
+                    dropDownHandle{4}.Value = dropDownHandle{4}.Items{1};
+                catch
+                end
             else
                 strcmp(yDescriptor,'Count')
                 dropDownHandle{4}.Items = [constantFetcherFn('shapeDescriptor',...
