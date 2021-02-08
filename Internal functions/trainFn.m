@@ -99,6 +99,7 @@ if isempty(structureClass)
 end
 
 %% training classifier
+structureClass
 classificationModel = fitcecoc(structureProps,...
     structureClass,'Learners',classificationAlgorithm);
 crossValidatedClassificationModel = crossval(classificationModel);

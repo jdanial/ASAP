@@ -213,11 +213,18 @@ for graphId = 1 : numGraphs
                     end
                 end
             end
-            
+            if ~strcmp(yDescriptor,'Count')
+                %% concatenating x, y and zDataTemp with other data for same plot
+                xData{rowNum,colNum} = [xData{rowNum,colNum} xDataTemp];
+                yData{rowNum,colNum} = [yData{rowNum,colNum} yDataTemp];
+                zData{rowNum,colNum} = [zData{rowNum,colNum} zDataTemp];
+            end
+        end
+        if strcmp(yDescriptor,'Count')
             %% concatenating x, y and zDataTemp with other data for same plot
-            xData{rowNum,colNum} = [xData{rowNum,colNum} xDataTemp];
-            yData{rowNum,colNum} = [yData{rowNum,colNum} yDataTemp];
-            zData{rowNum,colNum} = [zData{rowNum,colNum} zDataTemp];
+            xData{rowNum,colNum} = xDataTemp;
+            yData{rowNum,colNum} = yDataTemp;
+            zData{rowNum,colNum} = zDataTemp;
         end
         
         %% assigning data to arrays for input to GRAMM
